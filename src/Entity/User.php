@@ -60,6 +60,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         $this->articles = new ArrayCollection();
         $this->comments = new ArrayCollection();
+
+        $this->CreatedAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
+        $this->isActive = true;
+        $this->roles = ['ROLE_USER']; // ON VA DEFINIR USER CLASSIQUE COMME USER PAR DEFAUT
     }
 
     public function getId(): ?int

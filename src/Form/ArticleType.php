@@ -25,7 +25,7 @@ class ArticleType extends AbstractType
             ])
             ->add('author', EntityType::class, [
                 'class' => User::class,
-                'choice_label' => 'id',
+                'choice_label' => 'username',
             ])
         ;
     }
