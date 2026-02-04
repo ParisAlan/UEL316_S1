@@ -22,9 +22,9 @@ class Article
     #[ORM\Column(type: Types::TEXT)]
     private ?string $content = null;
 
-    #[ORM\ManyToOne(inversedBy: 'articles')]
-    #[ORM\JoinColumn(nullable: false)]
-    private ?User $author = null;
+//    #[ORM\ManyToOne(inversedBy: 'articles')]
+//    #[ORM\JoinColumn(nullable: false)]
+//    private ?User $author = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $image = null;
@@ -35,15 +35,17 @@ class Article
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
-    /**
-     * @var Collection<int, Comment>
-     */
-    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'article')]
-    private Collection $comments;
+//    /**
+//     * @var Collection<int, Comment>
+//     */
+//    #[ORM\OneToMany(targetEntity: Comment::class, mappedBy: 'article')]
+//    private Collection $comments;
 
     public function __construct()
     {
-        $this->comments = new ArrayCollection();
+//        $this->comments = new ArrayCollection();
+        $this->publishedAt = new \DateTimeImmutable();
+        $this->updatedAt = new \DateTimeImmutable();
     }
 
     public function getId(): ?int
@@ -112,45 +114,45 @@ class Article
         return $this;
     }
 
-    public function getAuthor(): ?User
-    {
-        return $this->author;
-    }
-
-    public function setAuthor(?User $author): static
-    {
-        $this->author = $author;
-
-        return $this;
-    }
+//    public function getAuthor(): ?User
+//    {
+//        return $this->author;
+//    }
+//
+//    public function setAuthor(?User $author): static
+//    {
+//        $this->author = $author;
+//
+//        return $this;
+//    }
 
     /**
      * @return Collection<int, Comment>
      */
-    public function getComments(): Collection
-    {
-        return $this->comments;
-    }
-
-    public function addComment(Comment $comment): static
-    {
-        if (!$this->comments->contains($comment)) {
-            $this->comments->add($comment);
-            $comment->setArticle($this);
-        }
-
-        return $this;
-    }
-
-    public function removeComment(Comment $comment): static
-    {
-        if ($this->comments->removeElement($comment)) {
-            // set the owning side to null (unless already changed)
-            if ($comment->getArticle() === $this) {
-                $comment->setArticle(null);
-            }
-        }
-
-        return $this;
-    }
+//    public function getComments(): Collection
+//    {
+//        return $this->comments;
+//    }
+//
+//    public function addComment(Comment $comment): static
+//    {
+//        if (!$this->comments->contains($comment)) {
+//            $this->comments->add($comment);
+//            $comment->setArticle($this);
+//        }
+//
+//        return $this;
+//    }
+//
+//    public function removeComment(Comment $comment): static
+//    {
+//        if ($this->comments->removeElement($comment)) {
+//            // set the owning side to null (unless already changed)
+//            if ($comment->getArticle() === $this) {
+//                $comment->setArticle(null);
+//            }
+//        }
+//
+//        return $this;
+//    }
 }
