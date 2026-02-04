@@ -8,13 +8,20 @@
     .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
 </style>
 
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <div class="container mt-4">
+        <div class="row">
+            {% for article in articles %}
+                <div class="col-lg-4">
+                    <div class="card" style="width: 18rem;">
+                        <img src="{{ 'articles/'~article.image }}" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ article.title }}</h5>
+                            <a href="#" class="btn btn-primary">Voir les détails</a>
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>C:/Users/alanp/paris_alan_w1_UEL316_project/src/Controller/HomeController.php</code></li>
-        <li>Your template at <code>C:/Users/alanp/paris_alan_w1_UEL316_project/templates/home/index.html.twig</code></li>
-    </ul>
-</div>
 {% endblock %}
