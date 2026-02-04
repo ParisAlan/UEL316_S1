@@ -35,6 +35,12 @@ class Article
     #[ORM\Column]
     private ?\DateTimeImmutable $updatedAt = null;
 
+    /**
+     * @var Collection<int, User>
+     */
+    #[ORM\ManyToMany(targetEntity: User::class, inversedBy: 'articles')]
+    private Collection $author;
+
 //    /**
 //     * @var Collection<int, Comment>
 //     */
@@ -46,6 +52,7 @@ class Article
 //        $this->comments = new ArrayCollection();
         $this->publishedAt = new \DateTimeImmutable();
         $this->updatedAt = new \DateTimeImmutable();
+        $this->author = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -155,4 +162,28 @@ class Article
 //
 //        return $this;
 //    }
+
+/**
+ * @return Collection<int, User>
+ */
+public function getAuthor(): Collection
+{
+    return $this->author;
+}
+
+public function addAuthor(User $author): static
+{
+    if (!$this->author->contains($author)) {
+        $this->author->add($author);
+    }
+
+    return $this;
+}
+
+public function removeAuthor(User $author): static
+{
+    $this->author->removeElement($author);
+
+    return $this;
+}
 }
