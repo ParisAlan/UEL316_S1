@@ -24,6 +24,13 @@ class ArticleRepository extends ServiceEntityRepository
             ->getQuery()
             ->getResult();
     }
+    public function getAllArticlesFilters() {
+        return $this->createQueryBuilder('p')
+            ->orderBy('p.id', 'DESC')
+            ->leftJoin('p.author','a')->addSelect('a')
+            ->getQuery()
+            ->getResult();
+    }
 
 //    /**
 //     * @return Article[] Returns an array of Article objects

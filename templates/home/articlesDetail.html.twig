@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello HomeController!{% endblock %}
+
+{% block body %}
+
+    <div class="container mt-4">
+        <img src="{{ '../articles/'~articles.image }}" class="card-img-top" alt="...">
+        <h1>{{ articles.title }}</h1>
+        <div>{{ articles.content|raw }}</div>
+    </div>
+
+{% endblock %}

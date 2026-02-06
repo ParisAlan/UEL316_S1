@@ -3,7 +3,10 @@
 namespace App\Controller;
 
 use App\Repository\ArticleRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
@@ -18,12 +21,31 @@ final class HomeController extends AbstractController
         return $this->render('home/index.html.twig', [
             'articles' => $articles,
         ]);
-
-    }    #[Route('/articles', name: 'app_home_articles')]
-    public function articles_index(): Response
+    }
+    #[Route('/articles', name: 'app_home_articles')]
+    public function articles_index(ArticleRepository $articleRepository, Request $request, PaginatorInterface $paginator): Response
     {
-        return $this->render('home/articles.html.twig', [
+        $query = $articleRepository->getAllArticlesFilters();
 
+        $articles = $paginator->paginate(
+            $query, /* query NOT result */
+            $request->query->getInt('page', 1), /* page number */
+            1 /* limit per page */
+        );
+
+
+        return $this->render('home/articles.html.twig', [
+            'articles' => $articles,
+        ]);
+    }
+    #[Route('/articles/{id}', name: 'app_home_articles_detail')]
+    public function articlesDetail(ArticleRepository $articleRepository, $id): Response
+    {
+
+        $articles = $articleRepository->findOneBy(["id" => $id]);
+
+        return $this->render('home/articlesDetail.html.twig', [
+            'articles' => $articles,
         ]);
     }
 }
