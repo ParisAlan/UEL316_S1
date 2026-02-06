@@ -20,6 +20,7 @@ class ArticleRepository extends ServiceEntityRepository
         return $this->createQueryBuilder('p')
             ->orderBy('p.id', 'DESC')
             ->setMaxResults(3)
+            ->leftJoin('p.author','a')->addSelect('a')
             ->getQuery()
             ->getResult();
     }
