@@ -27,7 +27,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
         $article2 = new Article();
         $article2->setTitle('Article collaboratif');
         $article2->setContent('Article écrit par plusieurs auteurs...');
-        $article2->setImage('nkobless.png');
+        $article2->setImage('nkozzz.png');
         $article2->addAuthor(
             $this->getReference(UserFixtures::ADMIN_REF, User::class)
         );
