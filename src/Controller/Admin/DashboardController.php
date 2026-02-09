@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Article;
+use App\Entity\Comment;
 use App\Entity\User;
 use EasyCorp\Bundle\EasyAdminBundle\Attribute\AdminDashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
@@ -29,5 +30,6 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Gestion des utilisateurs', 'fas fa-list', User::class);
         yield MenuItem::linkToCrud('Gestion des articles', 'fas fa-list', Article::class);
+        yield MenuItem::linkToCrud('Gestion des commentaires sur les articles', 'fas fa-list', Comment::class);
     }
 }
