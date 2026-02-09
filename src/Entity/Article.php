@@ -147,27 +147,32 @@ class Article
         return $this;
     }
 
-/**
- * @return Collection<int, User>
- */
-public function getAuthor(): Collection
-{
-    return $this->author;
-}
-
-public function addAuthor(User $author): static
-{
-    if (!$this->author->contains($author)) {
-        $this->author->add($author);
+    /**
+     * @return Collection<int, User>
+     */
+    public function getAuthor(): Collection
+    {
+        return $this->author;
     }
 
-    return $this;
-}
+    public function addAuthor(User $author): static
+    {
+        if (!$this->author->contains($author)) {
+            $this->author->add($author);
+        }
 
-public function removeAuthor(User $author): static
-{
-    $this->author->removeElement($author);
+        return $this;
+    }
 
-    return $this;
-}
+    public function removeAuthor(User $author): static
+    {
+        $this->author->removeElement($author);
+
+        return $this;
+    }
+
+    public function __toString(): string
+    {
+        return $this->title ?? '';
+    }
 }
