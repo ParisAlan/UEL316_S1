@@ -4,9 +4,9 @@
         <div class="card-body">
             <h5 class="card-title">{{ article.title }}</h5>
             {% for authors in article.author %}
-                <a href="" class="btn btn-sm btn-warning">
+                <span>
                     {{ authors.username }}
-                </a>
+                </span>
             {% endfor %}
             <a href="{{ path('app_home_articles_detail', {id:article.id}) }}" class="btn btn-primary">Voir les détails</a>
         </div>
