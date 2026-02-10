@@ -1,3 +1,149 @@
 body {
     background-color: lightgrey;
 }
+/* Navbar principale */
+.navbar {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%) !important;
+    padding: 1rem 0;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+/* Brand/Logo */
+.navbar-brand {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #e94560 !important;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transition: all 0.3s ease;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.navbar-brand:hover {
+    color: #ff6b81 !important;
+    transform: scale(1.05);
+}
+
+/* Bouton toggler pour mobile */
+.navbar-toggler {
+    border-color: #e94560;
+    padding: 0.5rem;
+}
+
+.navbar-toggler:focus {
+    box-shadow: 0 0 0 0.25rem rgba(233, 69, 96, 0.25);
+}
+
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba(233, 69, 96, 1)' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+}
+
+/* Navigation items */
+.navbar-nav {
+    margin-left: auto;
+}
+
+.nav-item {
+    margin: 0 0.5rem;
+}
+
+.nav-link {
+    color: #f0f0f0 !important;
+    font-size: 1.1rem;
+    font-weight: 500;
+    padding: 0.5rem 1rem !important;
+    position: relative;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.95rem;
+}
+
+/* Effet de soulignement animé */
+.nav-link::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(90deg, #e94560, #ff6b81);
+    transition: all 0.3s ease;
+    transform: translateX(-50%);
+}
+
+.nav-link:hover::before,
+.nav-link.active::before {
+    width: 80%;
+}
+
+.nav-link:hover {
+    color: #e94560 !important;
+    transform: translateY(-2px);
+}
+
+.nav-link.active {
+    color: #e94560 !important;
+    font-weight: 600;
+}
+
+/* Container fluide */
+.container-fluid {
+    max-width: 1400px;
+    padding: 0 2rem;
+}
+
+/* Responsive - Mobile */
+@media (max-width: 991px) {
+    .navbar-collapse {
+        background: rgba(22, 33, 62, 0.98);
+        padding: 1.5rem;
+        margin-top: 1rem;
+        border-radius: 10px;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+    }
+    
+    .nav-item {
+        margin: 0.5rem 0;
+    }
+    
+    .nav-link {
+        padding: 0.75rem 1rem !important;
+        border-radius: 5px;
+    }
+    
+    .nav-link:hover {
+        background: rgba(233, 69, 96, 0.1);
+        transform: translateX(5px);
+    }
+    
+    .nav-link::before {
+        display: none;
+    }
+}
+
+/* Animation d'entrée */
+@keyframes slideDown {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+.navbar {
+    animation: slideDown 0.5s ease-out;
+}
+
+/* Effet de scroll (optionnel - à ajouter avec JS) */
+.navbar.scrolled {
+    background: linear-gradient(135deg, #0f0f1e 0%, #0a0e1e 100%) !important;
+    padding: 0.5rem 0;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.5);
+}
