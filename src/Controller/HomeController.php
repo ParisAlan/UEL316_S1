@@ -48,4 +48,17 @@ final class HomeController extends AbstractController
             'articles' => $articles,
         ]);
     }
+
+    #[Route('/contact', name: 'app_contact')]
+    public function contact(ArticleRepository $articleRepository): Response
+    {
+        return $this->render('home/contact.html.twig', [
+        ]);
+    }
+    #[Route('/presentation', name: 'app_presentation')]
+    public function presentation(ArticleRepository $articleRepository): Response
+    {
+        return $this->render('home/presentation.html.twig', [
+        ]);
+    }
 }
