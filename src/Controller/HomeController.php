@@ -30,7 +30,7 @@ final class HomeController extends AbstractController
         $articles = $paginator->paginate(
             $query, /* query NOT result */
             $request->query->getInt('page', 1), /* page number */
-            1 /* limit per page */
+            7 /* limit per page */
         );
 
 

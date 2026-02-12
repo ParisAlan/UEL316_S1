@@ -99,7 +99,7 @@ body {
    PAGE D'ACCUEIL - HERO SECTION
    ======================================== */
 .hero-section {
-    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), 
+    background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
                 url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?w=1920') center/cover;
     padding: 120px 0;
     text-align: center;
@@ -246,7 +246,7 @@ body {
    FORMULAIRES (Register & Login)
    ======================================== */
 .form-container {
-    max-width: 500px;
+    max-width: 650px;
     margin: 80px auto;
     background: linear-gradient(145deg, #16213e 0%, #1a1a2e 100%);
     padding: 50px;
@@ -487,15 +487,15 @@ body {
         margin-top: 1rem;
         border-radius: 10px;
     }
-    
+
     .hero-section h1 {
         font-size: 2.5rem;
     }
-    
+
     .card {
         margin-bottom: 20px;
     }
-    
+
     .form-container {
         margin: 30px 15px;
         padding: 30px 20px;
@@ -506,11 +506,11 @@ body {
     .hero-section h1 {
         font-size: 2rem;
     }
-    
+
     .hero-section p {
         font-size: 1.2rem;
     }
-    
+
     .card-title {
         font-size: 1.2rem;
     }
@@ -781,22 +781,22 @@ body {
     .crud-container {
         padding: 20px;
     }
-    
+
     .table {
         font-size: 0.85rem;
     }
-    
+
     .table thead th,
     .table tbody td {
         padding: 10px 5px;
     }
-    
+
     .table tbody td a {
         display: block;
         margin-bottom: 10px;
         text-align: center;
     }
-    
+
     .crud-container form {
         padding: 20px;
     }
@@ -834,4 +834,4 @@ body {
     background: rgba(23, 162, 184, 0.2);
     border: 2px solid #17a2b8;
     color: #17a2b8;
-} 
+}
