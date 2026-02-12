@@ -1227,6 +1227,12 @@ body {
 .footer-section:nth-child(3) { animation-delay: 0.3s; }
 .footer-section:nth-child(4) { animation-delay: 0.4s; }
 
+.text-connexion {
+    text-align: center;
+    margin-top: 15px;
+    margin-bottom: 5px;
+}
+
 /* ========================================
    COMMENTAIRES
    ======================================== */
@@ -1241,4 +1247,9 @@ body {
     opacity: 0.5;
 }
 
+.comments-pics {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+}
 

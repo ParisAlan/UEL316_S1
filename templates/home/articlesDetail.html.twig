@@ -18,26 +18,14 @@
             {% if articles.comments|length > 0 %}
                 {% for comment in articles.comments %}
                     <div class="commentary d-flex align-items-start mb-4 p-3 border rounded">
-
                         <div class="me-3">
-                            <img
-                                src="https://www.centre-social-la-seyne.com/wp-content/uploads/2025/03/blank-profile-picture-973460_960_720.webp"
-                                alt="Photo de profil"
-                                width="60"
-                                height="60"
-                                class="rounded-circle"
-                                style="object-fit: cover;"
-                            >
+                            <img class="rounded-circle comments-pics" src="https://www.centre-social-la-seyne.com/wp-content/uploads/2025/03/blank-profile-picture-973460_960_720.webp" alt="Photo de profil">
                         </div>
                         <div>
                             <h6 class="mb-1">
-                                {{ comment.title }} -
-                                <span class="text-muted">par {{ comment.author }}</span>
+                                {{ comment.title }} - <span class="text-muted">par {{ comment.author }}</span>
                             </h6>
-
-                            <p class="mb-0">
-                                {{ comment.content }}
-                            </p>
+                            <p class="mb-0"> {{ comment.content }} </p>
                         </div>
                     </div>
                 {% endfor %}
