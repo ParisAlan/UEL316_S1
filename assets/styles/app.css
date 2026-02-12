@@ -24,6 +24,10 @@ a {
     font-weight: 700;
 }
 
+i {
+    font-style: normal;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);
@@ -142,6 +146,7 @@ body {
     font-size: 1.2rem;
     color: var(--color-gold);
     margin-bottom: 30px;
+    margin-top: 20px;
     font-weight: 600;
 }
 
@@ -956,7 +961,7 @@ body {
     .contact-form-wrapper {
         padding: 25px;
     }
-    
+
     .contact-form .form-row {
         grid-template-columns: 1fr;
         gap: 0;
@@ -1086,6 +1091,7 @@ body {
     display: flex;
     gap: 10px;
     margin-top: 15px;
+    flex-direction: column;
 }
 
 .footer-newsletter input {
@@ -1168,33 +1174,33 @@ body {
         padding: 40px 0 0;
         margin-top: 50px;
     }
-    
+
     .footer-container {
         grid-template-columns: 1fr;
         gap: 30px;
     }
-    
+
     .footer-newsletter {
         flex-direction: column;
     }
-    
+
     .footer-newsletter button {
         width: 100%;
     }
-    
+
     .footer-social {
         justify-content: center;
     }
-    
+
     .footer-bottom {
         padding: 20px 15px;
     }
-    
+
     .footer-legal {
         flex-direction: column;
         gap: 5px;
     }
-    
+
     .footer-legal span {
         display: none;
     }
