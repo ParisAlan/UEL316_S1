@@ -1,15 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}Pacdo - Accueil{% endblock %}
 
 {% block body %}
+<div class="hero-section">
+    <h1>🎬 Pacdo Cinéma</h1>
+    <p>Votre portail vers le 7ème art</p>
+</div>
 
-    <div class="container mt-4">
-        <div class="row">
-            {% for article in articles %}
-                {% include 'partials/_articles_cards.html.twig' %}
-            {% endfor %}
-        </div>
+<div class="container">
+    <h2 style="text-align: center; color: var(--color-gold); margin-bottom: 40px; font-size: 2.5rem;">Dernières Actualités</h2>
+    <div class="row">
+        {% for article in articles %}
+            {% include 'partials/_articles_cards.html.twig' %}
+        {% endfor %}
     </div>
-
+</div>
 {% endblock %}

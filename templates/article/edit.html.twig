@@ -1,13 +1,18 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Edit Article{% endblock %}
+{% block title %}Modifier l'Article{% endblock %}
 
 {% block body %}
-    <h1>Edit Article</h1>
+<div class="container">
+    <div class="crud-container">
+        <h1>✏️ Modifier l'Article</h1>
 
-    {{ include('article/_form.html.twig', {'button_label': 'Update'}) }}
+        {{ include('article/_form.html.twig', {'button_label': 'Mettre à jour'}) }}
 
-    <a href="{{ path('app_article_index') }}">back to list</a>
-
-    {{ include('article/_delete_form.html.twig') }}
+        <div class="crud-actions">
+            <a href="{{ path('app_article_index') }}">← Retour à la liste</a>
+            {{ include('article/_delete_form.html.twig') }}
+        </div>
+    </div>
+</div>
 {% endblock %}
