@@ -17,6 +17,13 @@
     box-sizing: border-box;
 }
 
+a {
+    text-decoration: none;
+    color: var(--color-primary);
+    text-transform: uppercase;
+    font-weight: 700;
+}
+
 body {
     font-family: 'Montserrat', sans-serif;
     background: linear-gradient(135deg, #0f0f1e 0%, #1a1a2e 100%);

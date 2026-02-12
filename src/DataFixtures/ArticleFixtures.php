@@ -10,6 +10,8 @@ use Doctrine\Common\DataFixtures\DependentFixtureInterface;
 
 class ArticleFixtures extends Fixture implements DependentFixtureInterface
 {
+    public const ARTICLE_REF = 'article 2';
+
     public function load(ObjectManager $manager): void
     {
         // Article 1
@@ -34,6 +36,7 @@ class ArticleFixtures extends Fixture implements DependentFixtureInterface
             $this->getReference(UserFixtures::ADMIN_REF2, User::class)
         );
         $manager->persist($article2);
+        $this->addReference(self::ARTICLE_REF, $article2);
 
         // NOUVEAUX ARTICLES CINÉMA
         $articlesData = [
