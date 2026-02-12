@@ -10,7 +10,25 @@
             <div>{{ articles.content|raw }}</div>
         </div>
 
-        <hr>
+        {% if app.user %}
+            <div class="mt-5">
+                <h3>Ajouter un commentaire</h3>
+
+                {{ form_start(form) }}
+
+                {{ form_widget(form.title, {'attr': {'class': 'form-control-comments', 'placeholder': 'Titre'}}) }}
+                {{ form_widget(form.content, {'attr': {'class': 'form-control-comments mt-3', 'placeholder': 'Votre commentaire'}}) }}
+
+                <button class="btn btn-primary mt-3">Publier</button>
+
+                {{ form_end(form) }}
+            </div>
+        {% else %}
+            <div class="alert alert-info mt-4">
+                Vous devez être connecté pour commenter.
+            </div>
+        {% endif %}
+
 
         <div class="comments-section mt-5">
             <h2>Commentaires ({{ articles.comments|length }})</h2>
@@ -33,6 +51,5 @@
                 <p>Aucun commentaire pour le moment.</p>
             {% endif %}
         </div>
-
     </div>
 {% endblock %}

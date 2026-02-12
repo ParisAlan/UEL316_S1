@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\Comment;
+use App\Form\CommentType;
+use App\Entity\Article;
 use App\Repository\ArticleRepository;
 use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
@@ -53,14 +56,29 @@ final class HomeController extends AbstractController
         ]);
     }
 
-    #[Route('/articles/{id}', name: 'app_home_articles_detail')]
-    public function articlesDetail(ArticleRepository $articleRepository, CommentRepository $commentRepository, $id): Response
+    #[Route('/articles/{id}', name: 'app_home_articles_detail', methods: ['GET', 'POST'])]
+    public function articlesDetail(Request $request, Article $article, EntityManagerInterface $entityManager): Response
     {
+        // On reprend le fonctionnement du CRUD fais pour Comment
+        $comment = new Comment();
+        $form = $this->createForm(CommentType::class, $comment);
+        $form->handleRequest($request);
 
-        $articles = $articleRepository->findOneBy(["id" => $id]);
+        if ($form->isSubmitted() && $form->isValid() && $this->getUser()) {
+            $comment->setAuthor($this->getUser());
+            $comment->setArticle($article);
+
+            $entityManager->persist($comment);
+            $entityManager->flush();
+
+            return $this->redirectToRoute('app_home_articles_detail', [
+                'id' => $article->getId()
+            ]);
+        }
 
         return $this->render('home/articlesDetail.html.twig', [
-            'articles' => $articles,
+            'articles' => $article,
+            'form' => $form->createView()
         ]);
     }
 }

@@ -1253,3 +1253,17 @@ body {
     object-fit: cover;
 }
 
+.form-control-comments {
+    background: rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(233, 69, 96, 0.3);
+    color: var(--color-light);
+    padding: 12px 20px;
+    border-radius: 10px;
+    transition: var(--transition);
+    width: 100%;
+}
+
+.form-control-comments::placeholder {
+    color: white !important;
+    opacity: 0.3;
+}
