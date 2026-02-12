@@ -3,11 +3,48 @@
 {% block title %}{{ articles.title }}{% endblock %}
 
 {% block body %}
-<div class="container">
-    <div class="article-detail">
-        <img src="{{ '../articles/'~articles.image }}" alt="{{ articles.title }}">
-        <h1>{{ articles.title }}</h1>
-        <div>{{ articles.content|raw }}</div>
+    <div class="container">
+        <div class="article-detail">
+            <img src="{{ '../articles/'~articles.image }}" alt="{{ articles.title }}">
+            <h1>{{ articles.title }}</h1>
+            <div>{{ articles.content|raw }}</div>
+        </div>
+
+        <hr>
+
+        <div class="comments-section mt-5">
+            <h2>Commentaires ({{ articles.comments|length }})</h2>
+
+            {% if articles.comments|length > 0 %}
+                {% for comment in articles.comments %}
+                    <div class="commentary d-flex align-items-start mb-4 p-3 border rounded">
+
+                        <div class="me-3">
+                            <img
+                                src="https://www.centre-social-la-seyne.com/wp-content/uploads/2025/03/blank-profile-picture-973460_960_720.webp"
+                                alt="Photo de profil"
+                                width="60"
+                                height="60"
+                                class="rounded-circle"
+                                style="object-fit: cover;"
+                            >
+                        </div>
+                        <div>
+                            <h6 class="mb-1">
+                                {{ comment.title }} -
+                                <span class="text-muted">par {{ comment.author }}</span>
+                            </h6>
+
+                            <p class="mb-0">
+                                {{ comment.content }}
+                            </p>
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p>Aucun commentaire pour le moment.</p>
+            {% endif %}
+        </div>
+
     </div>
-</div>
 {% endblock %}

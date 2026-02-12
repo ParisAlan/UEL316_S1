@@ -259,7 +259,7 @@ body {
    ======================================== */
 .form-container {
     max-width: 650px;
-    margin: 80px auto;
+    margin: 100px auto;
     background: linear-gradient(145deg, #16213e 0%, #1a1a2e 100%);
     padding: 50px;
     border-radius: 20px;
@@ -852,7 +852,7 @@ body {
    FORMULAIRE DE CONTACT
    ======================================== */
 .contact-form-wrapper {
-    max-width: 800px;
+    max-width: 950px;
     margin: 0 auto 60px;
     background: linear-gradient(145deg, #1a1a2e 0%, #16213e 100%);
     padding: 40px;
@@ -1226,3 +1226,19 @@ body {
 .footer-section:nth-child(2) { animation-delay: 0.2s; }
 .footer-section:nth-child(3) { animation-delay: 0.3s; }
 .footer-section:nth-child(4) { animation-delay: 0.4s; }
+
+/* ========================================
+   COMMENTAIRES
+   ======================================== */
+
+.commentary {
+    color: white !important;
+    background: rgba(22, 33, 62, 0.5);
+}
+
+.commentary span {
+    color: white !important;
+    opacity: 0.5;
+}
+
+

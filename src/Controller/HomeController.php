@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\ArticleRepository;
+use App\Repository\CommentRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -39,13 +40,15 @@ final class HomeController extends AbstractController
         ]);
     }
     #[Route('/articles/{id}', name: 'app_home_articles_detail')]
-    public function articlesDetail(ArticleRepository $articleRepository, $id): Response
+    public function articlesDetail(ArticleRepository $articleRepository, CommentRepository $commentRepository, $id): Response
     {
 
         $articles = $articleRepository->findOneBy(["id" => $id]);
+        $comments = $commentRepository->findOneBy(["author" => $id ]);
 
         return $this->render('home/articlesDetail.html.twig', [
             'articles' => $articles,
+            'comments' => $comments
         ]);
     }
 
