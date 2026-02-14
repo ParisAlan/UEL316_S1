@@ -39,11 +39,17 @@
                         <div class="me-3">
                             <img class="rounded-circle comments-pics" src="https://www.centre-social-la-seyne.com/wp-content/uploads/2025/03/blank-profile-picture-973460_960_720.webp" alt="Photo de profil">
                         </div>
-                        <div>
+                        <div class="flex-grow-1">
                             <h6 class="mb-1">
                                 {{ comment.title }} - <span class="text-muted">par {{ comment.author }}</span>
                             </h6>
                             <p class="mb-0"> {{ comment.content }} </p>
+                            
+                            {% if app.user and app.user.id != comment.author.id %}
+                        <button class="btn-report mt-2" onclick="openReportModal({{ comment.id }})">
+                          🚩 Signaler
+                         </button>
+                    {% endif %}
                         </div>
                     </div>
                 {% endfor %}
@@ -52,4 +58,50 @@
             {% endif %}
         </div>
     </div>
+
+    {# Modal de signalement #}
+    <div id="reportModal" class="modal-report">
+        <div class="modal-content-report">
+            <span class="close-modal" onclick="closeReportModal()">&times;</span>
+            <h2>🚩 Signaler ce commentaire</h2>
+            <form id="reportForm" method="post">
+                <input type="hidden" id="reportCommentId" name="comment_id">
+                
+                <div class="form-group">
+                    <label for="reportReason">Raison du signalement :</label>
+                    <select name="reason" id="reportReason" class="form-control" required>
+                        <option value="">Choisir une raison...</option>
+                        <option value="Contenu offensant">Contenu offensant</option>
+                        <option value="Spam">Spam</option>
+                        <option value="Harcèlement">Harcèlement</option>
+                        <option value="Fausses informations">Fausses informations</option>
+                        <option value="Hors sujet">Hors sujet</option>
+                        <option value="Autre">Autre</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary mt-3">Envoyer le signalement</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+    function openReportModal(commentId) {
+        document.getElementById('reportModal').style.display = 'block';
+        document.getElementById('reportCommentId').value = commentId;
+        document.getElementById('reportForm').action = '/comment/' + commentId + '/report';
+    }
+
+    function closeReportModal() {
+        document.getElementById('reportModal').style.display = 'none';
+    }
+
+    // Fermer la modal si on clique en dehors
+    window.onclick = function(event) {
+        const modal = document.getElementById('reportModal');
+        if (event.target == modal) {
+            modal.style.display = 'none';
+        }
+    }
+    </script>
 {% endblock %}
